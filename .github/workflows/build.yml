@@ -8,15 +8,26 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v3
 
-    - name: Use Node.js
-      uses: actions/setup-node@v2
+    - name: Use Node.js and cache deps
+      uses: actions/setup-node@v4
       with:
-        node-version: '14'
+        node-version: '20'
+        cache: 'yarn'
+        cache-dependency-path: '**/yarn.lock'
 
     - name: Install dependencies
-      run: yarn
+      run: yarn install --frozen-lockfile
+
+    - name: Test (coverage)
+      run: yarn test:coverage
+
+    - name: Upload coverage artifact
+      uses: actions/upload-artifact@v4
+      with:
+        name: coverage
+        path: coverage
 
     - name: Build
       run: yarn build

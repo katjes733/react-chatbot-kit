@@ -124,7 +124,7 @@ const useChatbot = ({
 
     widgets = getWidgets(config);
     widgets.forEach((widget: IWidget) =>
-      widgetRegistry?.addWidget(widget, rest)
+      widgetRegistry.addWidget(widget, rest)
     );
   } else {
     actionProv = actionProvider;
@@ -133,7 +133,7 @@ const useChatbot = ({
 
     widgets = getWidgets(config);
     widgets.forEach((widget: IWidget) =>
-      widgetRegistry?.addWidget(widget, rest)
+      widgetRegistry.addWidget(widget, rest)
     );
   }
 
