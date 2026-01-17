@@ -1,0 +1,100 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`UI snapshots ChatbotError matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="react-chatbot-kit-error"
+  >
+    <h1
+      class="react-chatbot-kit-error-header"
+    >
+      Ooops. Something is missing.
+    </h1>
+    <div
+      class="react-chatbot-kit-error-container"
+    >
+      <div
+        class="react-chatbot-kit-chat-bot-message-container"
+      >
+        <div
+          class="react-chatbot-kit-chat-bot-avatar"
+        >
+          <div
+            class="react-chatbot-kit-chat-bot-avatar-container"
+          >
+            <p
+              class="react-chatbot-kit-chat-bot-avatar-letter"
+            >
+              B
+            </p>
+          </div>
+        </div>
+        <div
+          class="react-chatbot-kit-chat-bot-message"
+        >
+          <span>
+            test error
+          </span>
+          <div
+            class="react-chatbot-kit-chat-bot-message-arrow"
+          />
+        </div>
+      </div>
+    </div>
+    <a
+      class="react-chatbot-kit-error-docs"
+      href="https://fredrikoseberg.github.io/react-chatbot-kit-docs/"
+      rel="noopener norefferer"
+      target="_blank"
+    >
+      View the docs
+    </a>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`UI snapshots Loader matches snapshot 1`] = `
+<DocumentFragment>
+  <div
+    class="chatbot-loader-container"
+  >
+    <svg
+      height="21px"
+      id="dots"
+      version="1.1"
+      viewBox="0 0 132 58"
+      width="50px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        stroke="none"
+      >
+        <g
+          fill="#fff"
+          id="chatbot-loader"
+        >
+          <circle
+            cx="25"
+            cy="30"
+            id="chatbot-loader-dot1"
+            r="13"
+          />
+          <circle
+            cx="65"
+            cy="30"
+            id="chatbot-loader-dot2"
+            r="13"
+          />
+          <circle
+            cx="105"
+            cy="30"
+            id="chatbot-loader-dot3"
+            r="13"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+</DocumentFragment>
+`;

@@ -1,0 +1,268 @@
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+
+exports[`Snapshots — components Chat snapshot (empty messages) 1`] = `
+<div>
+  <div
+    class="react-chatbot-kit-chat-container"
+  >
+    <div
+      class="react-chatbot-kit-chat-inner-container"
+    >
+      <div
+        class="react-chatbot-kit-chat-header"
+      >
+        Header
+      </div>
+      <div
+        class="react-chatbot-kit-chat-message-container"
+      >
+        <div
+          style="padding-bottom: 15px;"
+        />
+      </div>
+      <div
+        class="react-chatbot-kit-chat-input-container"
+      >
+        <form
+          class="react-chatbot-kit-chat-input-form"
+        >
+          <input
+            class="react-chatbot-kit-chat-input"
+            placeholder="Write here"
+            value=""
+          />
+          <button
+            class="react-chatbot-kit-chat-btn-send"
+          >
+            <test-file-stub
+              classname="react-chatbot-kit-chat-btn-send-icon"
+            />
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Snapshots — components Chatbot snapshot (useChatbot mocked) 1`] = `
+<div>
+  <div
+    class="react-chatbot-kit-chat-container"
+  >
+    <div
+      class="react-chatbot-kit-chat-inner-container"
+    >
+      <div
+        class="react-chatbot-kit-chat-header"
+      >
+        Conversation with Bot
+      </div>
+      <div
+        class="react-chatbot-kit-chat-message-container"
+      >
+        <div
+          style="padding-bottom: 15px;"
+        />
+      </div>
+      <div
+        class="react-chatbot-kit-chat-input-container"
+      >
+        <form
+          class="react-chatbot-kit-chat-input-form"
+        >
+          <input
+            class="react-chatbot-kit-chat-input"
+            placeholder="Write your message here"
+            value=""
+          />
+          <button
+            class="react-chatbot-kit-chat-btn-send"
+          >
+            <test-file-stub
+              classname="react-chatbot-kit-chat-btn-send-icon"
+            />
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Snapshots — components ChatbotError snapshot 1`] = `
+<div>
+  <div
+    class="react-chatbot-kit-error"
+  >
+    <h1
+      class="react-chatbot-kit-error-header"
+    >
+      Ooops. Something is missing.
+    </h1>
+    <div
+      class="react-chatbot-kit-error-container"
+    >
+      <div
+        class="react-chatbot-kit-chat-bot-message-container"
+      >
+        <div
+          class="react-chatbot-kit-chat-bot-avatar"
+        >
+          <div
+            class="react-chatbot-kit-chat-bot-avatar-container"
+          >
+            <p
+              class="react-chatbot-kit-chat-bot-avatar-letter"
+            >
+              B
+            </p>
+          </div>
+        </div>
+        <div
+          class="react-chatbot-kit-chat-bot-message"
+        >
+          <span>
+            Error
+          </span>
+          <div
+            class="react-chatbot-kit-chat-bot-message-arrow"
+          />
+        </div>
+      </div>
+    </div>
+    <a
+      class="react-chatbot-kit-error-docs"
+      href="https://fredrikoseberg.github.io/react-chatbot-kit-docs/"
+      rel="noopener norefferer"
+      target="_blank"
+    >
+      View the docs
+    </a>
+  </div>
+</div>
+`;
+
+exports[`Snapshots — components ChatbotMessage snapshot (bot, not loading) 1`] = `
+<div>
+  <div
+    class="react-chatbot-kit-chat-bot-message-container"
+  >
+    <div
+      class="react-chatbot-kit-chat-bot-avatar"
+    >
+      <div
+        class="react-chatbot-kit-chat-bot-avatar-container"
+      >
+        <p
+          class="react-chatbot-kit-chat-bot-avatar-letter"
+        >
+          B
+        </p>
+      </div>
+    </div>
+    <div
+      class="react-chatbot-kit-chat-bot-message"
+    >
+      <span>
+        Hello
+      </span>
+      <div
+        class="react-chatbot-kit-chat-bot-message-arrow"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Snapshots — components ChatbotMessageAvatar snapshot 1`] = `
+<div>
+  <div
+    class="react-chatbot-kit-chat-bot-avatar"
+  >
+    <div
+      class="react-chatbot-kit-chat-bot-avatar-container"
+    >
+      <p
+        class="react-chatbot-kit-chat-bot-avatar-letter"
+      >
+        B
+      </p>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Snapshots — components Loader snapshot 1`] = `
+<div>
+  <div
+    class="chatbot-loader-container"
+  >
+    <svg
+      height="21px"
+      id="dots"
+      version="1.1"
+      viewBox="0 0 132 58"
+      width="50px"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <g
+        fill="none"
+        stroke="none"
+      >
+        <g
+          fill="#fff"
+          id="chatbot-loader"
+        >
+          <circle
+            cx="25"
+            cy="30"
+            id="chatbot-loader-dot1"
+            r="13"
+          />
+          <circle
+            cx="65"
+            cy="30"
+            id="chatbot-loader-dot2"
+            r="13"
+          />
+          <circle
+            cx="105"
+            cy="30"
+            id="chatbot-loader-dot3"
+            r="13"
+          />
+        </g>
+      </g>
+    </svg>
+  </div>
+</div>
+`;
+
+exports[`Snapshots — components UserChatMessage snapshot 1`] = `
+<div>
+  <div
+    class="react-chatbot-kit-user-chat-message-container"
+  >
+    <div
+      class="react-chatbot-kit-user-chat-message"
+    >
+      Hi
+      <div
+        class="react-chatbot-kit-user-chat-message-arrow"
+      />
+    </div>
+    <div
+      class="react-chatbot-kit-user-avatar"
+    >
+      <div
+        class="react-chatbot-kit-user-avatar-container"
+      >
+        <test-file-stub
+          classname="react-chatbot-kit-user-avatar-icon"
+        />
+      </div>
+    </div>
+  </div>
+</div>
+`;
