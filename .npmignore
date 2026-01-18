@@ -7,3 +7,11 @@ skybot.gif
 tsconfig.json
 webpack.config.js
 yarn.lock
+node_modules
+tests
+coverage
+.vscode
+.eslintrc.js
+.eslintignore
+jest.config.js
+.github

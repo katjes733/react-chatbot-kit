@@ -65,6 +65,10 @@
     "eslint-plugin-prettier": "^5.1.0"
   },
   "license": "MIT",
+  "files": [
+    "build",
+    "src"
+  ],
   "publishConfig": {
     "access": "public"
   },
