@@ -11,10 +11,7 @@
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
-    "declarationDir": "build",
-    "strict": true,
-    "noEmit": true,
-    "skipLibCheck": true
+    "declarationDir": "build"
   },
   "exclude": ["node_modules", "build", "dist", "coverage"]
 }

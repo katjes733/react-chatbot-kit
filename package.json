@@ -1,6 +1,6 @@
 {
   "name": "react-chatbot-kit",
-  "version": "2.2.0",
+  "version": "0.1.0",
   "description": "Fully customizable chatbot kit for react.",
   "main": "build/index.js",
   "types": "build/src/index.d.ts",

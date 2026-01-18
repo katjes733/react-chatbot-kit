@@ -1,20 +1,48 @@
-# Introduction
+# react-chatbot-kit (fork)
 
-This repository is a fork of the original [react-chatbot-kit](https://github.com/FredrikOseberg/react-chatbot-kit).
+This is a maintained fork of the original react-chatbot-kit. It includes small improvements and fixes (for example: multi-line input support) to keep downstream projects working.
 
-I decided to create a fork and improve upon it as necessary to keep some projects of mine alive, since the original repository is seemingly not maintained any more with lots of issues piling up and even PRs not being merged.
-My specific use case was that I needed a multi-line input field.
+Contributions are welcome — PRs are appreciated. I review when possible.
 
-This is not an actively maintained repository, but as necessary to support my project, I will make changes and irregularly.
+## Development
 
-If you have any interest in improving this fork, feel free to suggest a PR, but since I am not actively maintaining this project, it may take some time for me to respond.
+### Prerequisites
 
-## Original content of `README.md`
+- Node 18+
+- Yarn 1.22+
 
-react-chatbot-kit provides an easy way to get started building chatbots.
+### Setup
 
-![package preview](https://media.giphy.com/media/J5kWtT2niLglbF7F54/giphy.gif)
+1. Install dependencies:
 
-## Documentation
+```bash
+yarn install
+```
 
-View the documentation here: https://fredrikoseberg.github.io/react-chatbot-kit-docs/
+2. Run the full verification (formatting + tests):
+
+```bash
+yarn verify
+```
+
+3. Run tests:
+
+```bash
+yarn test
+```
+
+### VS Code
+
+- Recommended: install common extensions (Prettier, ESLint, TypeScript).
+
+## Contributing
+
+- Keep test coverage at current levels.
+- Open an issue describing the problem before or alongside a PR.
+- Include the issue number in your PR and complete the PR template.
+- Run `yarn verify` and fix any failures before requesting review.
+
+## Notes
+
+- This repo is not actively maintained full-time, but improvements and fixes are accepted.
+- See the original project for context: https://github.com/FredrikOseberg/react-chatbot-kit
