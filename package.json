@@ -2,6 +2,15 @@
   "name": "@katjes733/react-chatbot-kit",
   "version": "0.1.0",
   "description": "Fully customizable chatbot kit for react.",
+  "keywords": [
+    "react",
+    "react-component",
+    "chatbot",
+    "chatbot-kit",
+    "chat-ui",
+    "conversational-ui",
+    "chatbot-framework"
+  ],
   "main": "build/index.js",
   "types": "build/src/index.d.ts",
   "dependencies": {
@@ -10,7 +19,7 @@
   "scripts": {
     "test": "jest",
     "test:coverage": "jest --coverage",
-    "build": "webpack --mode=production",
+    "build": "rimraf build && webpack --mode=production",
     "build-watch": "webpack --watch",
     "prepare": "yarn run build",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
@@ -45,6 +54,7 @@
     "webpack": "^5.104.1",
     "webpack-cli": "^6.0.1",
     "webpack-node-externals": "^2.5.2",
+    "rimraf": "^5.0.0",
     "eslint": "^8.44.0",
     "@typescript-eslint/parser": "^6.11.0",
     "@typescript-eslint/eslint-plugin": "^6.11.0",
