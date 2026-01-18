@@ -77,16 +77,15 @@ jobs:
           fi
           echo "version=$chosen" >> $GITHUB_OUTPUT
 
-      - name: Publish to npm
-        if: ${{ secrets.NPM_TOKEN != '' }}
+      - name: Publish to npm (skips if no NPM_TOKEN)
         env:
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
           NPM_TAG: ${{ github.event.inputs.npm_tag || 'latest' }}
           ACCESS: ${{ github.event.inputs.access || 'public' }}
         run: |
+          if [ -z "${NPM_TOKEN}" ]; then
+            echo "NPM_TOKEN not set; skipping publish."
+            exit 0
+          fi
           echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
           npm publish --access $ACCESS --tag $NPM_TAG
-
-      - name: Publish skipped (no NPM_TOKEN)
-        if: ${{ secrets.NPM_TOKEN == '' }}
-        run: echo "NPM_TOKEN not set; skipping publish."
