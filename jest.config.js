@@ -29,8 +29,8 @@ module.exports = {
     },
     'src/components/Chat': {
       statements: 99,
-      branches: 90,
-      functions: 95,
+      branches: 92,
+      functions: 96,
       lines: 100,
     },
   },

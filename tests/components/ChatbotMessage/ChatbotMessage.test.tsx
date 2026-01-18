@@ -1,6 +1,5 @@
 import React from 'react';
 import { render, screen, cleanup } from '@testing-library/react';
-import { act } from 'react-dom/test-utils';
 
 jest.useFakeTimers();
 
@@ -28,12 +27,7 @@ afterEach(() => {
 
 test('renders default avatar, message span and arrow when show=true', () => {
   render(
-    <ChatbotMessage
-      message="hello"
-      id={1}
-      messages={[]}
-      customStyles={{ backgroundColor: '' }}
-    />
+    <ChatbotMessage message="hello" id={1} messages={[]} customStyles={{ backgroundColor: '' }} />,
   );
 
   // show is toggled immediately (no delay)
@@ -56,7 +50,7 @@ test('shows Loader when loading is true', () => {
       id={2}
       messages={[]}
       customStyles={{ backgroundColor: '' }}
-    />
+    />,
   );
 
   expect(screen.getByTestId('loader')).toBeTruthy();
@@ -72,7 +66,7 @@ test('uses custom botAvatar when provided via customComponents', () => {
       messages={[]}
       customStyles={{ backgroundColor: '' }}
       customComponents={{ botAvatar: customAvatar }}
-    />
+    />,
   );
 
   expect(screen.getByTestId('custom-avatar')).toBeTruthy();
@@ -88,7 +82,7 @@ test('uses custom botChatMessage when provided via customComponents', () => {
       messages={[]}
       customStyles={{ backgroundColor: '' }}
       customComponents={{ botChatMessage: customChat }}
-    />
+    />,
   );
 
   expect(screen.getByTestId('custom-chat').textContent).toBe('custom message');
@@ -102,14 +96,14 @@ test('delay prop defers showing content', () => {
       messages={[]}
       delay={200}
       customStyles={{ backgroundColor: '' }}
-    />
+    />,
   );
 
   // initially not shown
   expect(document.querySelector('.react-chatbot-kit-chat-bot-message')).toBeNull();
 
   // advance timers by delay wrapped in act to avoid warnings
-  act(() => {
+  React.act(() => {
     jest.advanceTimersByTime(200);
   });
 
@@ -127,11 +121,11 @@ test('disableLoading effect calls setState after timeout and updater updates mes
       messages={messages}
       setState={setState}
       customStyles={{ backgroundColor: '' }}
-    />
+    />,
   );
 
   // default timeout is 750ms
-  act(() => {
+  React.act(() => {
     jest.advanceTimersByTime(750);
   });
 
@@ -155,10 +149,10 @@ test('disableLoading does not change other messages', () => {
       messages={messages}
       setState={setState}
       customStyles={{ backgroundColor: '' }}
-    />
+    />,
   );
 
-  act(() => {
+  React.act(() => {
     jest.advanceTimersByTime(750);
   });
 
@@ -176,7 +170,7 @@ test('when withAvatar is false, avatar and arrow are not rendered', () => {
       messages={[]}
       withAvatar={false}
       customStyles={undefined as any}
-    />
+    />,
   );
 
   // default avatar letter 'B' should not be present

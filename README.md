@@ -1,4 +1,4 @@
-# react-chatbot-kit (fork)
+# react-chatbot-kit
 
 This is a maintained fork of the original react-chatbot-kit. It includes small improvements and fixes (for example: multi-line input support) to keep downstream projects working.
 

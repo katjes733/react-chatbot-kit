@@ -1,0 +1,55 @@
+import React from 'react';
+import { render, fireEvent } from '@testing-library/react';
+
+import TextAreaMessage from '../../../src/components/InputMessage/TextAreaMessage';
+
+describe('TextAreaMessage', () => {
+  it('renders and handles change and submit with custom style', () => {
+    const setInputValue = jest.fn();
+    const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
+
+    const { getByPlaceholderText, getByRole, container } = render(
+      <TextAreaMessage
+        input="hello"
+        setInputValue={setInputValue}
+        handleSubmit={handleSubmit}
+        placeholderText="Type"
+        customButtonStyle={{ backgroundColor: 'blue' }}
+      />,
+    );
+
+    const textarea = getByPlaceholderText('Type') as HTMLTextAreaElement;
+    expect(textarea).not.toBeNull();
+    expect(textarea.value).toBe('hello');
+
+    fireEvent.change(textarea, { target: { value: 'world' } });
+    expect(setInputValue).toHaveBeenCalledWith('world');
+
+    const button = getByRole('button') as HTMLElement;
+    expect(button).not.toBeNull();
+    expect((button as HTMLElement).style.backgroundColor).toBe('blue');
+
+    const form = container.querySelector('form') as HTMLFormElement;
+    fireEvent.submit(form);
+    expect(handleSubmit).toHaveBeenCalled();
+  });
+
+  it('clicking button calls handleSubmit and button has no style when customButtonStyle missing', () => {
+    const setInputValue = jest.fn();
+    const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
+
+    const { getByRole } = render(
+      <TextAreaMessage
+        input=""
+        setInputValue={setInputValue}
+        handleSubmit={handleSubmit}
+        placeholderText="Send"
+      />,
+    );
+
+    const button = getByRole('button') as HTMLElement;
+    fireEvent.click(button);
+    expect(handleSubmit).toHaveBeenCalled();
+    expect(button.style.backgroundColor).toBe('');
+  });
+});

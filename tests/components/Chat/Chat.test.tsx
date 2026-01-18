@@ -12,7 +12,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: {} as any,
       placeholderText: 'Write here',
@@ -41,7 +44,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: {} as any,
       placeholderText: 'Write here',
@@ -71,7 +77,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: {} as any,
       placeholderText: 'Write here',
@@ -103,7 +112,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: { custom_type: customComp } as any,
       placeholderText: 'Write here',
@@ -131,7 +143,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: {} as any,
       placeholderText: 'Write here',
@@ -176,7 +191,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: {} as any,
       placeholderText: 'Write here',
@@ -202,7 +220,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: {} as any,
       placeholderText: 'Write here',
@@ -229,7 +250,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: 'Header',
       customMessages: {} as any,
       placeholderText: 'Write here',
@@ -256,7 +280,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: { header: headerComp } as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -283,7 +310,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -313,7 +343,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -340,7 +373,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -367,7 +403,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: 'rgb(1,2,3)' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: 'rgb(1,2,3)' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -395,7 +434,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -425,7 +467,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -452,7 +497,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -480,7 +528,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -507,7 +558,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -521,7 +575,7 @@ describe('Chat component', () => {
     render(<Chat {...props} />);
     // React will assign the DOM element to the ref; override its scrollHeight getter
     if (ref.current) {
-      let assigned = { val: 0 } as any;
+      const assigned = { val: 0 } as any;
       Object.defineProperty(ref.current, 'scrollHeight', {
         get: () => 555,
       });
@@ -538,6 +592,71 @@ describe('Chat component', () => {
     jest.useRealTimers();
   });
 
+  test('scrollIntoView is a no-op when messageContainerRef.current is null', () => {
+    jest.useFakeTimers();
+    const ref: any = { current: null };
+
+    const props: any = {
+      state: { messages: [] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: false,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: ref,
+    };
+
+    render(<Chat {...props} />);
+    // React will assign a DOM node to the ref during render; simulate missing current
+    ref.current = null;
+    // run timers - should not throw and ref.current remains null
+    jest.runAllTimers();
+    expect(ref.current).toBeNull();
+    jest.useRealTimers();
+  });
+
+  test('does not schedule scroll when disableScrollToBottom is true', () => {
+    const setTimeoutSpy = jest.spyOn(global, 'setTimeout');
+
+    const props: any = {
+      state: { messages: [] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    render(<Chat {...props} />);
+    expect(setTimeoutSpy).not.toHaveBeenCalled();
+    setTimeoutSpy.mockRestore();
+  });
+
   test('custom message without widget returns component', () => {
     const customComp = () => <div data-testid="custom-no-widget">C</div>;
     const msg = { id: 71, type: 'ct', message: 'C' };
@@ -550,7 +669,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: { ct: customComp } as any,
       placeholderText: undefined,
@@ -577,7 +699,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: {} as any,
       placeholderText: undefined,
@@ -606,7 +731,9 @@ describe('Chat component', () => {
     let top = 0;
     Object.defineProperty(div, 'scrollTop', {
       get: () => top,
-      set: (v: number) => { top = v; },
+      set: (v: number) => {
+        top = v;
+      },
     });
 
     const ref: any = { current: div };
@@ -631,7 +758,10 @@ describe('Chat component', () => {
       actionProvider: {},
       customComponents: {} as any,
       botName: 'Bot',
-      customStyles: { botMessageBox: { backgroundColor: '' }, chatButton: { backgroundColor: '' } } as any,
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
       headerText: undefined,
       customMessages: { custom: customComp } as any,
       placeholderText: undefined,
@@ -648,5 +778,240 @@ describe('Chat component', () => {
     expect(getAllByTestId('ex-w').length).toBeGreaterThan(0);
     expect(getAllByTestId('ex-c').length).toBeGreaterThan(0);
     jest.useRealTimers();
+  });
+
+  test('custom inputMessage component that returns an element is used', () => {
+    const customInput = jest.fn((props: any) => <div data-testid="custom-input">OK</div>);
+
+    const props: any = {
+      state: { messages: [] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: { inputMessage: customInput } as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    const { getByTestId, container } = render(<Chat {...props} />);
+    expect(getByTestId('custom-input')).toBeTruthy();
+    // ensure default inputs are not rendered
+    expect(container.querySelector('input')).toBeNull();
+    expect(container.querySelector('textarea')).toBeNull();
+    expect(customInput).toHaveBeenCalled();
+    const callArgs = customInput.mock.calls[0][0];
+    expect(typeof callArgs.handleSubmit).toBe('function');
+  });
+
+  test('custom inputMessage component that returns null falls back to default input', () => {
+    const customInput = jest.fn(() => null);
+
+    const props: any = {
+      state: { messages: [] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: { inputMessage: customInput } as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    const { container } = render(<Chat {...props} />);
+    // fallback to input (default useTextArea = false)
+    expect(container.querySelector('input')).not.toBeNull();
+  });
+
+  test('no custom inputMessage and useTextArea false renders InputMessage (input)', () => {
+    const props: any = {
+      state: { messages: [] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+      useTextArea: false,
+    };
+
+    const { container } = render(<Chat {...props} />);
+    expect(container.querySelector('input')).not.toBeNull();
+    expect(container.querySelector('textarea')).toBeNull();
+  });
+
+  test('no custom inputMessage and useTextArea true renders TextAreaMessage (textarea)', () => {
+    const props: any = {
+      state: { messages: [] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+      useTextArea: true,
+    };
+
+    const { container } = render(<Chat {...props} />);
+    expect(container.querySelector('textarea')).not.toBeNull();
+    expect(container.querySelector('input')).toBeNull();
+  });
+
+  test('custom message with widget prop but registry returns null does not render widget', () => {
+    const widgetRegistry = { getWidget: (): any => null };
+
+    const customComp = () => <div data-testid="custom-c-null">C</div>;
+
+    const msg = {
+      id: 200,
+      type: 'custom_null',
+      message: 'Custom null',
+      widget: 'nowhere',
+      payload: {},
+    };
+
+    const props: any = {
+      state: { messages: [msg] },
+      setState: () => {},
+      widgetRegistry,
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: { custom_null: customComp } as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    const { getByTestId, queryByTestId } = render(<Chat {...props} />);
+    expect(getByTestId('custom-c-null')).toBeTruthy();
+    expect(queryByTestId('nowhere')).toBeNull();
+  });
+
+  test('bot message with widget prop but registry returns null does not render widget', () => {
+    const msg = {
+      id: 99,
+      type: 'bot',
+      message: 'Bot missing widget',
+      widget: 'nowhere',
+      loading: false,
+    };
+
+    const props: any = {
+      state: { messages: [msg] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    const { queryByTestId, getByText } = render(<Chat {...props} />);
+    expect(getByText('Bot missing widget')).toBeTruthy();
+    expect(queryByTestId('nowhere')).toBeNull();
+  });
+
+  test('user message with widget prop but registry returns null does not render widget', () => {
+    const msg = {
+      id: 100,
+      type: 'user',
+      message: 'User missing widget',
+      widget: 'nowhere',
+      payload: {},
+    };
+
+    const props: any = {
+      state: { messages: [msg] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    const { queryByTestId, getByText } = render(<Chat {...props} />);
+    expect(getByText('User missing widget')).toBeTruthy();
+    expect(queryByTestId('nowhere')).toBeNull();
   });
 });

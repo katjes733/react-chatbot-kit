@@ -29,6 +29,7 @@ interface IChatbotProps {
   validator?: (input: string) => boolean;
   runInitialMessagesWithHistory?: boolean;
   disableScrollToBottom?: boolean;
+  useTextArea?: boolean;
 }
 
 const Chatbot = ({
@@ -41,6 +42,7 @@ const Chatbot = ({
   messageHistory,
   runInitialMessagesWithHistory,
   disableScrollToBottom,
+  useTextArea = true,
   validator,
   ...rest
 }: IChatbotProps) => {
@@ -95,6 +97,7 @@ const Chatbot = ({
         validator={validator}
         messageHistory={messageHistory}
         disableScrollToBottom={disableScrollToBottom}
+        useTextArea={useTextArea}
         messageContainerRef={messageContainerRef}
       />
     );
@@ -117,6 +120,7 @@ const Chatbot = ({
             validator={validator}
             messageHistory={messageHistory}
             disableScrollToBottom={disableScrollToBottom}
+            useTextArea={useTextArea}
             messageContainerRef={messageContainerRef}
           />
         </MessageParser>
