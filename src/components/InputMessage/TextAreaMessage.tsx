@@ -2,7 +2,6 @@ import React from 'react';
 
 import ChatIcon from '../../assets/icons/paper-plane.svg';
 
-import './UserChatMessage.css';
 import { IInputMessageProps } from '../../interfaces/IInputMessage';
 
 const TextAreaMessage = ({

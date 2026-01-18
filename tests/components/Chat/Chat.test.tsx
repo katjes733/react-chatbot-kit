@@ -454,7 +454,7 @@ describe('Chat component', () => {
 
   test('previous bot had widget so avatar shows for second message', () => {
     const widget = <div data-testid="wprev">W</div>;
-    const widgetRegistry = { getWidget: (name: any) => (name === 'w' ? widget : null) };
+    const widgetRegistry = { getWidget: (): any => widget };
 
     const m1 = { id: 61, type: 'bot', message: 'first', widget: 'w', loading: false };
     const m2 = { id: 62, type: 'bot', message: 'second', loading: false };
@@ -589,6 +589,40 @@ describe('Chat component', () => {
     jest.runAllTimers();
     // scrollTop should have been set to the element's scrollHeight (555)
     expect((ref.current && (ref.current as any).scrollTop) || 0).toBe(555);
+    jest.useRealTimers();
+  });
+
+  test('scrollIntoView assigns undefined when scrollHeight is missing', () => {
+    jest.useFakeTimers();
+    // current exists but has no scrollHeight property
+    const ref: any = { current: { scrollTop: 0 } };
+
+    const props: any = {
+      state: { messages: [] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: false,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: ref,
+    };
+
+    render(<Chat {...props} />);
+    jest.runAllTimers();
+    // assignment should set scrollTop to undefined (no scrollHeight available)
+    expect(ref.current && (ref.current as any).scrollTop).toBe(undefined);
     jest.useRealTimers();
   });
 
@@ -741,7 +775,7 @@ describe('Chat component', () => {
     const widget = <span data-testid="ex-w">W</span>;
     const widgetRegistry = { getWidget: (_: any) => widget };
 
-    const customComp = (p: any) => <span data-testid="ex-c">C</span>;
+    const customComp = () => <span data-testid="ex-c">C</span>;
 
     const msgs = [
       { id: 1, type: 'bot', message: 'b1', loading: false, widget: 'w' },
@@ -781,7 +815,7 @@ describe('Chat component', () => {
   });
 
   test('custom inputMessage component that returns an element is used', () => {
-    const customInput = jest.fn((props: any) => <div data-testid="custom-input">OK</div>);
+    const customInput = jest.fn(() => <div data-testid="custom-input">OK</div>);
 
     const props: any = {
       state: { messages: [] },
@@ -811,8 +845,8 @@ describe('Chat component', () => {
     expect(container.querySelector('input')).toBeNull();
     expect(container.querySelector('textarea')).toBeNull();
     expect(customInput).toHaveBeenCalled();
-    const callArgs = customInput.mock.calls[0][0];
-    expect(typeof callArgs.handleSubmit).toBe('function');
+    const callArgs: any = (customInput as any).mock.calls[0]?.[0];
+    expect(typeof callArgs?.handleSubmit).toBe('function');
   });
 
   test('custom inputMessage component that returns null falls back to default input', () => {
