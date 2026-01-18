@@ -1,8 +1,4 @@
-import {
-  IBaseMessage,
-  IMessage,
-  IMessageOptions,
-} from '../../interfaces/IMessages';
+import { IBaseMessage, IMessage, IMessageOptions } from '../../interfaces/IMessages';
 
 export const uniqueId = () => {
   return Math.round(Date.now() * Math.random());
@@ -39,10 +35,7 @@ export const createChatMessage = (message: string, type: string) => {
   };
 };
 
-export const createChatBotMessage = (
-  message: string,
-  options: IMessageOptions
-) => {
+export const createChatBotMessage = (message: string, options: IMessageOptions) => {
   return {
     ...createChatMessage(message, 'bot'),
     ...options,
@@ -50,18 +43,11 @@ export const createChatBotMessage = (
   };
 };
 
-export const createCustomMessage = (
-  message: string,
-  type: string,
-  options: IMessageOptions
-) => {
+export const createCustomMessage = (message: string, type: string, options: IMessageOptions) => {
   return { ...createChatMessage(message, type), ...options };
 };
 
-export const createClientMessage = (
-  message: string,
-  options: IMessageOptions
-) => {
+export const createClientMessage = (message: string, options: IMessageOptions) => {
   return { ...createChatMessage(message, 'user'), ...options };
 };
 

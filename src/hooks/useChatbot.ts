@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import {
   createClientMessage,
   createChatBotMessage,
@@ -21,7 +21,7 @@ interface IUseChatbotParams {
   messageParser: any;
   messageHistory: IMessage[] | string;
   saveMessages: (messages: IMessage[], html: string) => any | null;
-  runInitialMessagesWithHistory?: Boolean;
+  runInitialMessagesWithHistory?: boolean;
 }
 
 const useChatbot = ({
@@ -116,25 +116,21 @@ const useChatbot = ({
       createClientMessage,
       stateRef.current,
       createCustomMessage,
-      rest
+      rest,
     );
 
     widgetRegistry = new WidgetRegistry(setState, actionProv);
     messagePars = new messageParser(actionProv, stateRef.current);
 
     widgets = getWidgets(config);
-    widgets.forEach((widget: IWidget) =>
-      widgetRegistry.addWidget(widget, rest)
-    );
+    widgets.forEach((widget: IWidget) => widgetRegistry.addWidget(widget, rest));
   } else {
     actionProv = actionProvider;
     messagePars = messageParser;
     widgetRegistry = new WidgetRegistry(setState, null);
 
     widgets = getWidgets(config);
-    widgets.forEach((widget: IWidget) =>
-      widgetRegistry.addWidget(widget, rest)
-    );
+    widgets.forEach((widget: IWidget) => widgetRegistry.addWidget(widget, rest));
   }
 
   return {

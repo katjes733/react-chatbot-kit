@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "DavidAnson.vscode-markdownlint",
+    "yzhang.markdown-all-in-one",
+    "dbaeumer.vscode-eslint",
+    "stylelint.vscode-stylelint",
+    "esbenp.prettier-vscode",
+    "Orta.vscode-jest",
+    "hbenl.vscode-test-explorer",
+    "timonwong.shellcheck",
+    "hashicorp.terraform"
+  ]
+}

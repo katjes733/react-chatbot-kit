@@ -52,7 +52,7 @@ export const validateProps = (config: IConfig, MessageParser: any) => {
   const errors = [];
   if (!config.initialMessages) {
     errors.push(
-      "Config must contain property 'initialMessages', and it expects it to be an array of chatbotmessages."
+      "Config must contain property 'initialMessages', and it expects it to be an array of chatbotmessages.",
     );
   }
 

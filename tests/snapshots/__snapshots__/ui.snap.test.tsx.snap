@@ -44,7 +44,7 @@ exports[`UI snapshots ChatbotError matches snapshot 1`] = `
     <a
       class="react-chatbot-kit-error-docs"
       href="https://fredrikoseberg.github.io/react-chatbot-kit-docs/"
-      rel="noopener norefferer"
+      rel="noopener norefferer noreferrer"
       target="_blank"
     >
       View the docs

@@ -5,5 +5,5 @@ interface IUserChatMessageProps {
     message: string;
     customComponents: ICustomComponents;
 }
-declare const UserChatMessage: ({ message, customComponents, }: IUserChatMessageProps) => React.JSX.Element;
+declare const UserChatMessage: ({ message, customComponents }: IUserChatMessageProps) => React.JSX.Element;
 export default UserChatMessage;

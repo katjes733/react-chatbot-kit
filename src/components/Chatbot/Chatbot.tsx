@@ -26,8 +26,8 @@ interface IChatbotProps {
   placeholderText?: string;
   saveMessages?: (ref: any) => any;
   messageHistory?: IMessage[] | string;
-  validator?: (input: string) => Boolean;
-  runInitialMessagesWithHistory?: Boolean;
+  validator?: (input: string) => boolean;
+  runInitialMessagesWithHistory?: boolean;
   disableScrollToBottom?: boolean;
 }
 
@@ -100,11 +100,7 @@ const Chatbot = ({
     );
   } else {
     return (
-      <ActionProvider
-        state={state}
-        setState={setState}
-        createChatBotMessage={createChatBotMessage}
-      >
+      <ActionProvider state={state} setState={setState} createChatBotMessage={createChatBotMessage}>
         <MessageParser>
           <Chat
             state={state}

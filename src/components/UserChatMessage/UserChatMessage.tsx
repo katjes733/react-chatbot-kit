@@ -13,10 +13,7 @@ interface IUserChatMessageProps {
   customComponents: ICustomComponents;
 }
 
-const UserChatMessage = ({
-  message,
-  customComponents,
-}: IUserChatMessageProps) => {
+const UserChatMessage = ({ message, customComponents }: IUserChatMessageProps) => {
   return (
     <div className="react-chatbot-kit-user-chat-message-container">
       <ConditionallyRender

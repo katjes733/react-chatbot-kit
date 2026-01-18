@@ -11,9 +11,7 @@ interface IChatbotErrorProps {
 const ChatbotError = ({ message }: IChatbotErrorProps) => {
   return (
     <div className="react-chatbot-kit-error">
-      <h1 className="react-chatbot-kit-error-header">
-        Ooops. Something is missing.
-      </h1>
+      <h1 className="react-chatbot-kit-error-header">Ooops. Something is missing.</h1>
       <div className="react-chatbot-kit-error-container">
         <ChatbotMessage
           message={message}
@@ -26,7 +24,7 @@ const ChatbotError = ({ message }: IChatbotErrorProps) => {
       </div>
       <a
         href="https://fredrikoseberg.github.io/react-chatbot-kit-docs/"
-        rel="noopener norefferer"
+        rel="noopener norefferer noreferrer"
         target="_blank"
         className="react-chatbot-kit-error-docs"
       >

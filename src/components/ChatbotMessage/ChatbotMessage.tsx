@@ -36,7 +36,7 @@ const ChatbotMessage = ({
     let timeoutId: any;
     const disableLoading = (
       messages: any[],
-      setState: React.Dispatch<React.SetStateAction<any>>
+      setState: React.Dispatch<React.SetStateAction<any>>,
     ) => {
       let defaultDisableTime = 750;
       if (delay) defaultDisableTime += delay;
@@ -44,13 +44,13 @@ const ChatbotMessage = ({
       timeoutId = setTimeout(() => {
         const newMessages = [...messages].map(message => {
           if (message.id === id) {
-            return {...message, loading: false, delay: undefined};
+            return { ...message, loading: false, delay: undefined };
           }
 
           return message;
         });
 
-        setState((state: any) => ({...state, messages: newMessages}));
+        setState((state: any) => ({ ...state, messages: newMessages }));
       }, defaultDisableTime);
     };
 
@@ -99,10 +99,7 @@ const ChatbotMessage = ({
               loader: <Loader />,
             })}
             elseShow={
-              <div
-                className="react-chatbot-kit-chat-bot-message"
-                style={chatBoxCustomStyles}
-              >
+              <div className="react-chatbot-kit-chat-bot-message" style={chatBoxCustomStyles}>
                 <ConditionallyRender
                   condition={loading}
                   show={<Loader />}
