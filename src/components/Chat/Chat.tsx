@@ -66,6 +66,7 @@ const Chat = ({
   const [input, setInputValue] = useState('');
 
   const scrollIntoView = () => {
+    
     setTimeout(() => {
       if (messageContainerRef.current) {
         messageContainerRef.current.scrollTop =
@@ -130,6 +131,7 @@ const Chat = ({
       actions,
     };
 
+    
     if (messageObject.widget) {
       const widget = widgetRegistry.getWidget(messageObject.widget, {
         ...state,
@@ -140,6 +142,7 @@ const Chat = ({
       return (
         <>
           {customMessage(props)}
+          
           {widget ? widget : null}
         </>
       );
@@ -149,12 +152,14 @@ const Chat = ({
   };
 
   const renderUserMessage = (messageObject: IMessage) => {
+    
     const widget = widgetRegistry.getWidget(messageObject.widget, {
       ...state,
       scrollIntoView,
       payload: messageObject.payload,
       actions,
     });
+    
     return (
       <>
         <UserChatMessage
@@ -162,6 +167,7 @@ const Chat = ({
           key={messageObject.id}
           customComponents={customComponents}
         />
+        
         {widget ? widget : null}
       </>
     );
@@ -185,6 +191,7 @@ const Chat = ({
       actions,
     };
 
+    
     if (messageObject.widget) {
       const widget = widgetRegistry.getWidget(chatbotMessageProps.widget, {
         ...state,
@@ -200,14 +207,16 @@ const Chat = ({
             {...chatbotMessageProps}
             key={messageObject.id}
           />
-          <ConditionallyRender
-            condition={!chatbotMessageProps.loading}
-            show={widget ? widget : null}
-          />
+            <ConditionallyRender
+              condition={!chatbotMessageProps.loading}
+              
+              show={widget ? widget : null}
+            />
         </>
       );
     }
 
+    
     return (
       <ChatbotMessage
         customStyles={customStyles.botMessageBox}
@@ -252,6 +261,7 @@ const Chat = ({
   };
 
   const customButtonStyle = { backgroundColor: '' };
+  
   if (customStyles && customStyles.chatButton) {
     customButtonStyle.backgroundColor = customStyles.chatButton.backgroundColor;
   }

@@ -14,9 +14,9 @@ jest.mock('../../src/hooks/useChatbot', () => ({
   default: () => ({
     configurationError: '',
     invalidPropsError: [],
-    ActionProvider: function DummyActionProvider() { return null; },
-    MessageParser: function DummyMessageParser() { return null; },
-    widgetRegistry: { getWidget: () => null },
+    ActionProvider: function DummyActionProvider(): any { return null; },
+    MessageParser: function DummyMessageParser(): any { return null; },
+    widgetRegistry: { getWidget: (): any => null },
     messageContainerRef: { current: null },
     actionProv: {},
     messagePars: {},
