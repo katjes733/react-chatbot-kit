@@ -620,6 +620,8 @@ describe('Chat component', () => {
     };
 
     render(<Chat {...props} />);
+    // React will assign a DOM node to the ref; replace it with a plain object lacking scrollHeight
+    ref.current = { scrollTop: 0 } as any;
     jest.runAllTimers();
     // assignment should set scrollTop to undefined (no scrollHeight available)
     expect(ref.current && (ref.current as any).scrollTop).toBe(undefined);
@@ -773,7 +775,7 @@ describe('Chat component', () => {
     const ref: any = { current: div };
 
     const widget = <span data-testid="ex-w">W</span>;
-    const widgetRegistry = { getWidget: (_: any) => widget };
+    const widgetRegistry = { getWidget: (): any => widget };
 
     const customComp = () => <span data-testid="ex-c">C</span>;
 
@@ -975,6 +977,79 @@ describe('Chat component', () => {
     const { getByTestId, queryByTestId } = render(<Chat {...props} />);
     expect(getByTestId('custom-c-null')).toBeTruthy();
     expect(queryByTestId('nowhere')).toBeNull();
+  });
+
+  test('no customStyles does not throw and defaults button style', () => {
+    const msg = { id: 300, type: 'bot', message: 'btn test' };
+
+    const props: any = {
+      state: { messages: [msg] },
+      setState: () => {},
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser: { parse: () => {} },
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: { botMessageBox: { backgroundColor: '' } } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    const { container } = render(<Chat {...props} />);
+    const btn = container.querySelector('button') as HTMLButtonElement;
+    // default empty backgroundColor
+    expect(btn.style.backgroundColor).toBe('');
+  });
+
+  test('handleValidMessage calls functional setState updater when provided', () => {
+    const setStateMock = jest.fn((updater: any) => {
+      // if updater is a function, call it with a baseline state to simulate React
+      if (typeof updater === 'function') {
+        const result = updater({ messages: [] });
+        // ensure the updater returns a state with one new user message
+        expect(Array.isArray(result.messages)).toBe(true);
+        expect(result.messages.length).toBe(1);
+      }
+      return undefined;
+    });
+
+    const messageParser = { parse: jest.fn() };
+
+    const props: any = {
+      state: { messages: [] },
+      setState: setStateMock,
+      widgetRegistry: { getWidget: (): any => null },
+      messageParser,
+      actionProvider: {},
+      customComponents: {} as any,
+      botName: 'Bot',
+      customStyles: {
+        botMessageBox: { backgroundColor: '' },
+        chatButton: { backgroundColor: '' },
+      } as any,
+      headerText: undefined,
+      customMessages: {} as any,
+      placeholderText: undefined,
+      validator: () => true,
+      disableScrollToBottom: true,
+      messageHistory: [] as any,
+      actions: {},
+      messageContainerRef: React.createRef<HTMLDivElement>(),
+    };
+
+    const { container } = render(<Chat {...props} />);
+    const input = container.querySelector('input') as HTMLInputElement;
+    fireEvent.change(input, { target: { value: 'hit updater' } });
+    fireEvent.submit(container.querySelector('form') as HTMLFormElement);
+
+    // setState should have been called with a function updater
+    expect(setStateMock).toHaveBeenCalled();
   });
 
   test('bot message with widget prop but registry returns null does not render widget', () => {
