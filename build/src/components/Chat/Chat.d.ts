@@ -13,7 +13,7 @@ interface IChatProps {
     headerText: string;
     customMessages: ICustomMessage;
     placeholderText: string;
-    validator: (input: string) => Boolean;
+    validator: (input: string) => boolean;
     state: any;
     disableScrollToBottom: boolean;
     messageHistory: IMessage[] | string;

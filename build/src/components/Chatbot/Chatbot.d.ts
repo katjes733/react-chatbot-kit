@@ -9,8 +9,8 @@ interface IChatbotProps {
     placeholderText?: string;
     saveMessages?: (ref: any) => any;
     messageHistory?: IMessage[] | string;
-    validator?: (input: string) => Boolean;
-    runInitialMessagesWithHistory?: Boolean;
+    validator?: (input: string) => boolean;
+    runInitialMessagesWithHistory?: boolean;
     disableScrollToBottom?: boolean;
 }
 declare const Chatbot: ({ actionProvider, messageParser, config, headerText, placeholderText, saveMessages, messageHistory, runInitialMessagesWithHistory, disableScrollToBottom, validator, ...rest }: IChatbotProps) => React.JSX.Element;

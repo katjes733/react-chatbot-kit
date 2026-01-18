@@ -8,7 +8,7 @@ interface IUseChatbotParams {
     messageParser: any;
     messageHistory: IMessage[] | string;
     saveMessages: (messages: IMessage[], html: string) => any | null;
-    runInitialMessagesWithHistory?: Boolean;
+    runInitialMessagesWithHistory?: boolean;
 }
 declare const useChatbot: ({ config, actionProvider, messageParser, messageHistory, runInitialMessagesWithHistory, saveMessages, ...rest }: IUseChatbotParams) => {
     configurationError: string;
