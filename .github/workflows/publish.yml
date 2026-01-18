@@ -1,0 +1,92 @@
+name: Publish
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Optional version to set before publishing (overrides package.json and release tag)'
+        required: false
+      npm_tag:
+        description: 'npm dist-tag to publish under'
+        required: false
+        default: 'latest'
+      access:
+        description: 'npm access level (public or restricted)'
+        required: false
+        default: 'public'
+
+concurrency:
+  group: publish-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Use Node.js and cache deps
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'yarn'
+          cache-dependency-path: '**/yarn.lock'
+
+      - name: Install dependencies
+        run: yarn install --frozen-lockfile
+
+      - name: Format verification
+        run: yarn format:check
+
+      - name: Test (coverage)
+        run: yarn test:coverage
+
+      - name: Upload coverage artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: coverage
+          path: coverage
+
+      - name: Build
+        run: yarn build
+
+      - name: Determine publish version
+        id: version
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+          INPUT_VERSION: ${{ github.event.inputs.version }}
+        run: |
+          pkg_ver=$(node -p "require('./package.json').version")
+          chosen="$pkg_ver"
+          if [ -n "$RELEASE_TAG" ]; then
+            # strip leading v if present
+            chosen="${RELEASE_TAG#v}"
+          fi
+          if [ -n "$INPUT_VERSION" ]; then
+            chosen="$INPUT_VERSION"
+          fi
+          if [ "$chosen" != "$pkg_ver" ]; then
+            node -e "const fs=require('fs');const p=JSON.parse(fs.readFileSync('package.json'));p.version='${chosen}';fs.writeFileSync('package.json',JSON.stringify(p,null,2)+'\n')"
+            echo "Updated package.json version: $chosen"
+          else
+            echo "Using package.json version: $pkg_ver"
+          fi
+          echo "version=$chosen" >> $GITHUB_OUTPUT
+
+      - name: Publish to npm
+        if: ${{ secrets.NPM_TOKEN != '' }}
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_TAG: ${{ github.event.inputs.npm_tag || 'latest' }}
+          ACCESS: ${{ github.event.inputs.access || 'public' }}
+        run: |
+          echo "//registry.npmjs.org/:_authToken=${NPM_TOKEN}" > ~/.npmrc
+          npm publish --access $ACCESS --tag $NPM_TAG
+
+      - name: Publish skipped (no NPM_TOKEN)
+        if: ${{ secrets.NPM_TOKEN == '' }}
+        run: echo "NPM_TOKEN not set; skipping publish."
