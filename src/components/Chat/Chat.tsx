@@ -59,8 +59,10 @@ const Chat = ({
 
   const scrollIntoView = () => {
     setTimeout(() => {
-      if (messageContainerRef.current) {
-        messageContainerRef.current.scrollTop = messageContainerRef?.current?.scrollHeight;
+      const ref = messageContainerRef;
+      if (ref && ref.current) {
+        const height = ref.current.scrollHeight;
+        ref.current.scrollTop = height;
       }
     }, 50);
   };
