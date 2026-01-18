@@ -6,10 +6,7 @@ class WidgetRegistry {
     this.actionProvider = actionProvider;
   }
 
-  addWidget = (
-    { widgetName, widgetFunc, mapStateToProps, props },
-    parentProps
-  ) => {
+  addWidget = ({ widgetName, widgetFunc, mapStateToProps, props }, parentProps) => {
     this[widgetName] = {
       widget: widgetFunc,
       props,
