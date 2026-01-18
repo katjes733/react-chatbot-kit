@@ -1,6 +1,22 @@
 name: Build
 
-on: [push]
+on:
+  push:
+    # Run on pushes to any branch (so pushes to PR branches trigger).
+    # Exclude Dependabot branch updates to avoid noisy runs.
+    branches-ignore:
+      - dependabot/**
+  pull_request:
+    branches:
+      - main
+    # Run when PRs are opened, updated (synchronize), reopened, or marked ready
+    # so checks run before merge and when commits are pushed to the PR branch.
+    types: [opened, synchronize, reopened, ready_for_review]
+  workflow_dispatch:
+
+concurrency:
+  group: build-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   build:
