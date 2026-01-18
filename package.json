@@ -1,5 +1,5 @@
 {
-  "name": "react-chatbot-kit",
+  "name": "@katjes733/react-chatbot-kit",
   "version": "0.1.0",
   "description": "Fully customizable chatbot kit for react.",
   "main": "build/index.js",
@@ -55,6 +55,9 @@
     "eslint-plugin-prettier": "^5.1.0"
   },
   "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/katjes733/react-chatbot-kit"
