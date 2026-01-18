@@ -20,8 +20,13 @@ const makeWrapper = (props: any, onResult: (res: any) => void) => {
 test('returns configurationError when required props are missing', () => {
   function MissingProps() {
     // pass nulls to trigger configurationError
-    // @ts-ignore
-    const result = useChatbot({ config: null, actionProvider: null, messageParser: null, messageHistory: null, saveMessages: null });
+    const result = useChatbot({
+      config: null,
+      actionProvider: null,
+      messageParser: null,
+      messageHistory: null,
+      saveMessages: null,
+    });
     return <div data-testid="out">{result.configurationError}</div>;
   }
 
@@ -35,8 +40,14 @@ test('returns invalidPropsError when config lacks initialMessages', () => {
 
   function InvalidProps() {
     // config without initialMessages should trigger validateProps error
-    // @ts-ignore
-    const result = useChatbot({ config: {} , actionProvider: DummyAction, messageParser: DummyParser, messageHistory: null, saveMessages: null });
+    const result = useChatbot({
+      // @ts-expect-error for testing invalid config
+      config: {},
+      actionProvider: DummyAction,
+      messageParser: DummyParser,
+      messageHistory: null,
+      saveMessages: null,
+    });
     return <div data-testid="out">{result.invalidPropsError}</div>;
   }
 
@@ -50,20 +61,24 @@ test('constructor branch and saveMessages on unmount are called', () => {
   function ActionProvider() {}
   function MessageParser() {
     // minimal parse implementation
-    // @ts-ignore
     this.parse = () => {};
   }
 
   function Wrapper() {
     const config: any = { initialMessages: [{ text: 'hello' }] };
-    // @ts-ignore
-    const result: any = useChatbot({ config, actionProvider: ActionProvider, messageParser: MessageParser, messageHistory: null, saveMessages: saveMock });
+    const result: any = useChatbot({
+      config,
+      actionProvider: ActionProvider,
+      messageParser: MessageParser,
+      messageHistory: null,
+      saveMessages: saveMock,
+    });
 
     // assign the hook's messageContainerRef synchronously via ref callback
     return (
       <div
         data-testid="ok"
-        ref={(el) => {
+        ref={el => {
           if (el && result && result.messageContainerRef) {
             result.messageContainerRef.current = el as any;
             result.messageContainerRef.current.innerHTML = '<span>saved</span>';
@@ -86,13 +101,21 @@ test('constructor branch and saveMessages on unmount are called', () => {
 });
 
 test('non-constructor branch does not throw', () => {
-  const config: any = { initialMessages: [], widgets: [{ widgetName: 'w', widgetFunc: (): any => null, mapStateToProps: [], props: {} }] };
+  const config: any = {
+    initialMessages: [],
+    widgets: [{ widgetName: 'w', widgetFunc: (): any => null, mapStateToProps: [], props: {} }],
+  };
   const actionObj = { send: () => {} };
-  const parserObj = { parse: (s: string) => {} };
+  const parserObj = { parse: () => {} };
 
   function Wrapper() {
-    // @ts-ignore
-    const result = useChatbot({ config, actionProvider: actionObj, messageParser: parserObj, messageHistory: null, saveMessages: null });
+    const result = useChatbot({
+      config,
+      actionProvider: actionObj,
+      messageParser: parserObj,
+      messageHistory: null,
+      saveMessages: null,
+    });
     useEffect(() => {
       // expose to global for manual inspection if needed
       (global as any).__hookResult = result;
@@ -100,12 +123,12 @@ test('non-constructor branch does not throw', () => {
     return <div>ok</div>;
   }
 
-    const { getByText } = render(<Wrapper />);
+  const { getByText } = render(<Wrapper />);
   expect(getByText('ok')).toBeTruthy();
 });
 
 describe('useChatbot additional checks', () => {
-  test('returns state with initialMessages when provided', (done) => {
+  test('returns state with initialMessages when provided', done => {
     const initialMessages: any[] = [{ message: 'hi', type: 'bot', id: 1 }];
     const config: any = { initialMessages };
     const onResult = (res: any) => {
@@ -118,7 +141,7 @@ describe('useChatbot additional checks', () => {
     render(<Wrapper />);
   });
 
-  test('messageHistory array overrides config.initialMessages and sets state', (done) => {
+  test('messageHistory array overrides config.initialMessages and sets state', done => {
     const config: any = { initialMessages: [{ message: 'fromConfig' }] };
     const messageHistory = [{ message: 'fromHistory' }, { message: 'second' }];
     let called = false;
@@ -133,11 +156,14 @@ describe('useChatbot additional checks', () => {
       done();
     };
 
-    const Wrapper = makeWrapper({ config, actionProvider: {}, messageParser: {}, messageHistory } as any, onResult);
+    const Wrapper = makeWrapper(
+      { config, actionProvider: {}, messageParser: {}, messageHistory } as any,
+      onResult,
+    );
     render(<Wrapper />);
   });
 
-  test('messageHistory string clears initialMessages when runInitialMessagesWithHistory is false', (done) => {
+  test('messageHistory string clears initialMessages when runInitialMessagesWithHistory is false', done => {
     const config: any = { initialMessages: [{ message: 'keep' }] };
     const messageHistory = 'some-history';
     const onResult = (res: any) => {
@@ -147,11 +173,20 @@ describe('useChatbot additional checks', () => {
       done();
     };
 
-    const Wrapper = makeWrapper({ config, actionProvider: {}, messageParser: {}, messageHistory, runInitialMessagesWithHistory: false } as any, onResult);
+    const Wrapper = makeWrapper(
+      {
+        config,
+        actionProvider: {},
+        messageParser: {},
+        messageHistory,
+        runInitialMessagesWithHistory: false,
+      } as any,
+      onResult,
+    );
     render(<Wrapper />);
   });
 
-  test('messageHistory string preserves initialMessages when runInitialMessagesWithHistory is true', (done) => {
+  test('messageHistory string preserves initialMessages when runInitialMessagesWithHistory is true', done => {
     const config: any = { initialMessages: [{ message: 'keep' }] };
     const messageHistory = 'some-history';
     const onResult = (res: any) => {
@@ -161,17 +196,28 @@ describe('useChatbot additional checks', () => {
       done();
     };
 
-    const Wrapper = makeWrapper({ config, actionProvider: {}, messageParser: {}, messageHistory, runInitialMessagesWithHistory: true } as any, onResult);
+    const Wrapper = makeWrapper(
+      {
+        config,
+        actionProvider: {},
+        messageParser: {},
+        messageHistory,
+        runInitialMessagesWithHistory: true,
+      } as any,
+      onResult,
+    );
     render(<Wrapper />);
   });
 
-  test('exposes returned API fields for constructor path', (done) => {
+  test('exposes returned API fields for constructor path', done => {
     function ActionProvider() {}
     function MessageParser() {
-      // @ts-ignore
       this.parse = () => {};
     }
-    const config: any = { initialMessages: [], widgets: [{ widgetName: 'w', widgetFunc: (): any => null, mapStateToProps: [], props: {} }] };
+    const config: any = {
+      initialMessages: [],
+      widgets: [{ widgetName: 'w', widgetFunc: (): any => null, mapStateToProps: [], props: {} }],
+    };
 
     const onResult = (res: any) => {
       expect(res).toBeDefined();
@@ -184,11 +230,14 @@ describe('useChatbot additional checks', () => {
       done();
     };
 
-    const Wrapper = makeWrapper({ config, actionProvider: ActionProvider, messageParser: MessageParser } as any, onResult);
+    const Wrapper = makeWrapper(
+      { config, actionProvider: ActionProvider, messageParser: MessageParser } as any,
+      onResult,
+    );
     render(<Wrapper />);
   });
 
-  test('calls WidgetRegistry.addWidget for each widget', (done) => {
+  test('calls WidgetRegistry.addWidget for each widget', done => {
     const config: any = {
       initialMessages: [],
       widgets: [
