@@ -40,6 +40,7 @@ yarn test
 - Keep test coverage at current levels.
 - Open an issue describing the problem before or alongside a PR.
 - Include the issue number in your PR and complete the PR template.
+- Set this repository's `main` branch as the PR base.
 - Run `yarn verify` and fix any failures before requesting review.
 
 ## Notes
