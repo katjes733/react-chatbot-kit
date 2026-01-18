@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect, SetStateAction } from 'react';
+import React, { useState, useEffect, SetStateAction } from 'react';
 import ConditionallyRender from 'react-conditionally-render';
 
 import UserChatMessage from '../UserChatMessage/UserChatMessage';
@@ -6,12 +6,11 @@ import ChatbotMessage from '../ChatbotMessage/ChatbotMessage';
 
 import { botMessage, userMessage, customMessage, createChatMessage } from './chatUtils';
 
-import ChatIcon from '../../assets/icons/paper-plane.svg';
-
 import './Chat.css';
 import { ICustomComponents, ICustomMessage, ICustomStyles } from '../../interfaces/IConfig';
 import { IMessage } from '../../interfaces/IMessages';
-import { string } from 'prop-types';
+import TextAreaMessage from '../InputMessage/TextAreaMessage';
+import InputMessage from '../InputMessage/InputMessage';
 
 interface IChatProps {
   setState: React.Dispatch<SetStateAction<any>>;
@@ -27,6 +26,7 @@ interface IChatProps {
   validator: (input: string) => boolean;
   state: any;
   disableScrollToBottom: boolean;
+  useTextArea?: boolean;
   messageHistory: IMessage[] | string;
   parse?: (message: string) => void;
   actions?: object;
@@ -48,6 +48,7 @@ const Chat = ({
   placeholderText,
   validator,
   disableScrollToBottom,
+  useTextArea = false,
   messageHistory,
   actions,
   messageContainerRef,
@@ -58,8 +59,10 @@ const Chat = ({
 
   const scrollIntoView = () => {
     setTimeout(() => {
-      if (messageContainerRef.current) {
-        messageContainerRef.current.scrollTop = messageContainerRef?.current?.scrollHeight;
+      const ref = messageContainerRef;
+      if (ref && ref.current) {
+        const height = ref.current.scrollHeight;
+        ref.current.scrollTop = height;
       }
     }, 50);
   };
@@ -128,7 +131,6 @@ const Chat = ({
       return (
         <>
           {customMessage(props)}
-
           {widget ? widget : null}
         </>
       );
@@ -258,6 +260,16 @@ const Chat = ({
     placeholder = placeholderText;
   }
 
+  const inputMessageElement = customComponents.inputMessage
+    ? customComponents.inputMessage({
+        input,
+        setInputValue,
+        handleSubmit,
+        placeholder,
+        customButtonStyle,
+      })
+    : null;
+
   return (
     <div className="react-chatbot-kit-chat-container">
       <div className="react-chatbot-kit-chat-inner-container">
@@ -278,17 +290,29 @@ const Chat = ({
         </div>
 
         <div className="react-chatbot-kit-chat-input-container">
-          <form className="react-chatbot-kit-chat-input-form" onSubmit={handleSubmit}>
-            <input
-              className="react-chatbot-kit-chat-input"
-              placeholder={placeholder}
-              value={input}
-              onChange={e => setInputValue(e.target.value)}
-            />
-            <button className="react-chatbot-kit-chat-btn-send" style={customButtonStyle}>
-              <ChatIcon className="react-chatbot-kit-chat-btn-send-icon" />
-            </button>
-          </form>
+          <ConditionallyRender
+            condition={!!inputMessageElement}
+            show={inputMessageElement}
+            elseShow={
+              useTextArea ? (
+                <TextAreaMessage
+                  input={input}
+                  setInputValue={setInputValue}
+                  handleSubmit={handleSubmit}
+                  placeholderText={placeholder}
+                  customButtonStyle={customButtonStyle}
+                />
+              ) : (
+                <InputMessage
+                  input={input}
+                  setInputValue={setInputValue}
+                  handleSubmit={handleSubmit}
+                  placeholderText={placeholder}
+                  customButtonStyle={customButtonStyle}
+                />
+              )
+            }
+          />
         </div>
       </div>
     </div>

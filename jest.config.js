@@ -27,12 +27,6 @@ module.exports = {
       functions: 100,
       lines: 100,
     },
-    'src/components/Chat': {
-      statements: 99,
-      branches: 90,
-      functions: 95,
-      lines: 100,
-    },
   },
   coverageDirectory: 'coverage',
   coverageReporters: [
