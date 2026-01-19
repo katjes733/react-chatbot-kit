@@ -30,6 +30,8 @@
   font-weight: medium;
   position: relative;
   text-align: left;
+  /* Preserve new lines from message text */
+  white-space: pre-wrap;
 }
 
 .react-chatbot-kit-user-chat-message-arrow {
