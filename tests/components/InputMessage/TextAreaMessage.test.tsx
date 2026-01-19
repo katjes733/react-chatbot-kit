@@ -52,4 +52,59 @@ describe('TextAreaMessage', () => {
     expect(handleSubmit).toHaveBeenCalled();
     expect(button.style.backgroundColor).toBe('');
   });
+
+  it('pressing Shift+Enter inserts newline (does not submit)', () => {
+    const setInputValue = jest.fn();
+    const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
+
+    const { getByPlaceholderText } = render(
+      <TextAreaMessage
+        input=""
+        setInputValue={setInputValue}
+        handleSubmit={handleSubmit}
+        placeholderText="ShiftEnterTest"
+      />,
+    );
+
+    const textarea = getByPlaceholderText('ShiftEnterTest') as HTMLTextAreaElement;
+
+    // spy on button.click to ensure it is NOT called for Shift+Enter
+    const origClick = (HTMLButtonElement.prototype as any).click;
+    const clickMock = jest.fn(function (this: HTMLButtonElement) {
+      if (origClick) origClick.call(this);
+    });
+    (HTMLButtonElement.prototype as any).click = clickMock;
+
+    fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: true });
+
+    expect(clickMock).not.toHaveBeenCalled();
+    expect(handleSubmit).not.toHaveBeenCalled();
+
+    (HTMLButtonElement.prototype as any).click = origClick;
+  });
+
+  it('pressing Enter without Shift prevents default and submits', () => {
+    const setInputValue = jest.fn();
+    const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
+
+    const { getByPlaceholderText } = render(
+      <TextAreaMessage
+        input=""
+        setInputValue={setInputValue}
+        handleSubmit={handleSubmit}
+        placeholderText="EnterTest"
+      />,
+    );
+
+    const textarea = getByPlaceholderText('EnterTest') as HTMLTextAreaElement;
+
+    const preventSpy = jest.spyOn(Event.prototype, 'preventDefault');
+
+    fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: false });
+
+    expect(handleSubmit).toHaveBeenCalled();
+    expect(preventSpy).toHaveBeenCalled();
+
+    preventSpy.mockRestore();
+  });
 });
