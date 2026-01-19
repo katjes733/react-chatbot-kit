@@ -1,4 +1,5 @@
 import React from 'react';
+import TextareaAutosize from 'react-textarea-autosize';
 
 import ChatIcon from '../../assets/icons/paper-plane.svg';
 
@@ -13,7 +14,7 @@ const TextAreaMessage = ({
 }: IInputMessageProps) => {
   return (
     <form className="react-chatbot-kit-chat-input-form" onSubmit={handleSubmit}>
-      <textarea
+      <TextareaAutosize
         className="react-chatbot-kit-chat-input"
         placeholder={placeholderText}
         value={input}
@@ -21,15 +22,12 @@ const TextAreaMessage = ({
         onKeyDown={e => {
           if (e.key === 'Enter' && !e.shiftKey) {
             e.preventDefault();
-            const form = (e.currentTarget as HTMLTextAreaElement).form;
-            if (form) {
-              // prefer requestSubmit when available to trigger submit handlers
-              // and respect form validation; fall back to submit
-              (form as HTMLFormElement & { requestSubmit?: () => void }).requestSubmit
-                ? (form as HTMLFormElement & { requestSubmit?: () => void }).requestSubmit!()
-                : form.submit();
-            }
+            // call the submit handler directly with a tiny synthetic event
+            handleSubmit({
+              preventDefault: () => {},
+            } as unknown as React.FormEvent<HTMLFormElement>);
           }
+          // Shift+Enter will just add a newline naturally
         }}
       />
       <button className="react-chatbot-kit-chat-btn-send" style={customButtonStyle}>

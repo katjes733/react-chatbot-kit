@@ -53,37 +53,6 @@ describe('TextAreaMessage', () => {
     expect(button.style.backgroundColor).toBe('');
   });
 
-  it('pressing Enter (no Shift) triggers form.requestSubmit when available', () => {
-    const setInputValue = jest.fn();
-    const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
-
-    const { getByPlaceholderText } = render(
-      <TextAreaMessage
-        input=""
-        setInputValue={setInputValue}
-        handleSubmit={handleSubmit}
-        placeholderText="EnterTest"
-      />,
-    );
-
-    const textarea = getByPlaceholderText('EnterTest') as HTMLTextAreaElement;
-
-    const origRequestSubmit = (HTMLFormElement.prototype as any).requestSubmit;
-    const requestSubmitMock = jest.fn(function (this: HTMLFormElement) {
-      // simulate native requestSubmit behavior by dispatching submit event
-      this.dispatchEvent(new Event('submit', { bubbles: true, cancelable: true }));
-    });
-    (HTMLFormElement.prototype as any).requestSubmit = requestSubmitMock;
-
-    fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: false });
-
-    expect(requestSubmitMock).toHaveBeenCalled();
-    expect(handleSubmit).toHaveBeenCalled();
-
-    // restore
-    (HTMLFormElement.prototype as any).requestSubmit = origRequestSubmit;
-  });
-
   it('pressing Shift+Enter inserts newline (does not submit)', () => {
     const setInputValue = jest.fn();
     const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
@@ -99,26 +68,22 @@ describe('TextAreaMessage', () => {
 
     const textarea = getByPlaceholderText('ShiftEnterTest') as HTMLTextAreaElement;
 
-    const origRequestSubmit = (HTMLFormElement.prototype as any).requestSubmit;
-    const origSubmit = (HTMLFormElement.prototype as any).submit;
-
-    const requestSubmitMock = jest.fn();
-    const submitMock = jest.fn();
-    (HTMLFormElement.prototype as any).requestSubmit = requestSubmitMock;
-    (HTMLFormElement.prototype as any).submit = submitMock;
+    // spy on button.click to ensure it is NOT called for Shift+Enter
+    const origClick = (HTMLButtonElement.prototype as any).click;
+    const clickMock = jest.fn(function (this: HTMLButtonElement) {
+      if (origClick) origClick.call(this);
+    });
+    (HTMLButtonElement.prototype as any).click = clickMock;
 
     fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: true });
 
-    expect(requestSubmitMock).not.toHaveBeenCalled();
-    expect(submitMock).not.toHaveBeenCalled();
+    expect(clickMock).not.toHaveBeenCalled();
     expect(handleSubmit).not.toHaveBeenCalled();
 
-    // restore
-    (HTMLFormElement.prototype as any).requestSubmit = origRequestSubmit;
-    (HTMLFormElement.prototype as any).submit = origSubmit;
+    (HTMLButtonElement.prototype as any).click = origClick;
   });
 
-  it('pressing Enter falls back to form.submit when requestSubmit missing', () => {
+  it('pressing Enter without Shift prevents default and submits', () => {
     const setInputValue = jest.fn();
     const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
 
@@ -127,66 +92,19 @@ describe('TextAreaMessage', () => {
         input=""
         setInputValue={setInputValue}
         handleSubmit={handleSubmit}
-        placeholderText="FallbackTest"
+        placeholderText="EnterTest"
       />,
     );
 
-    const textarea = getByPlaceholderText('FallbackTest') as HTMLTextAreaElement;
+    const textarea = getByPlaceholderText('EnterTest') as HTMLTextAreaElement;
 
-    const origRequestSubmit = (HTMLFormElement.prototype as any).requestSubmit;
-    const origSubmit = (HTMLFormElement.prototype as any).submit;
-
-    // remove requestSubmit to force fallback
-    (HTMLFormElement.prototype as any).requestSubmit = undefined;
-
-    const submitMock = jest.fn(function (this: HTMLFormElement) {
-      // calling submit programmatically; don't dispatch submit event here
-      // we just want to ensure fallback path executes
-    });
-    (HTMLFormElement.prototype as any).submit = submitMock;
+    const preventSpy = jest.spyOn(Event.prototype, 'preventDefault');
 
     fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: false });
 
-    expect(submitMock).toHaveBeenCalled();
+    expect(handleSubmit).toHaveBeenCalled();
+    expect(preventSpy).toHaveBeenCalled();
 
-    // restore
-    (HTMLFormElement.prototype as any).requestSubmit = origRequestSubmit;
-    (HTMLFormElement.prototype as any).submit = origSubmit;
-  });
-
-  it('pressing Enter when textarea has no form does nothing (covers else branch)', () => {
-    const setInputValue = jest.fn();
-    const handleSubmit = jest.fn((e: any) => e && e.preventDefault());
-
-    const { getByPlaceholderText } = render(
-      <TextAreaMessage
-        input=""
-        setInputValue={setInputValue}
-        handleSubmit={handleSubmit}
-        placeholderText="NoFormTest"
-      />,
-    );
-
-    const textarea = getByPlaceholderText('NoFormTest') as HTMLTextAreaElement;
-
-    // temporarily override the form getter to return null to simulate no form
-    const origDesc = Object.getOwnPropertyDescriptor(HTMLTextAreaElement.prototype, 'form');
-    Object.defineProperty(HTMLTextAreaElement.prototype, 'form', {
-      get: () => null,
-      configurable: true,
-    });
-
-    // ensure no errors are thrown and nothing is submitted
-    expect(() =>
-      fireEvent.keyDown(textarea, { key: 'Enter', code: 'Enter', shiftKey: false }),
-    ).not.toThrow();
-
-    // handler should not have been called because form is null
-    expect(handleSubmit).not.toHaveBeenCalled();
-
-    // restore original descriptor
-    if (origDesc) {
-      Object.defineProperty(HTMLTextAreaElement.prototype, 'form', origDesc);
-    }
+    preventSpy.mockRestore();
   });
 });
