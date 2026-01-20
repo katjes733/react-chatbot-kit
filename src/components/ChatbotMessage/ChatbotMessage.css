@@ -40,7 +40,7 @@
   margin-left: auto;
   text-align: left;
   /* Preserve new lines from message text */
-  white-space: pre-wrap;
+  white-space: pre-line;
 }
 
 .react-chatbot-kit-chat-bot-message-arrow {
