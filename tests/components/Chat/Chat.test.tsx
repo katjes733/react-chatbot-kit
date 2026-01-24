@@ -852,7 +852,7 @@ describe('Chat component', () => {
   });
 
   test('custom inputMessage component that returns null falls back to default input', () => {
-    const customInput = jest.fn(() => null);
+    const customInput = jest.fn((): any => null);
 
     const props: any = {
       state: { messages: [] },
@@ -1008,7 +1008,7 @@ describe('Chat component', () => {
   });
 
   test('handleValidMessage calls functional setState updater when provided', () => {
-    const setStateMock = jest.fn((updater: any) => {
+    const setStateMock = jest.fn((updater: any): any => {
       // if updater is a function, call it with a baseline state to simulate React
       if (typeof updater === 'function') {
         const result = updater({ messages: [] });

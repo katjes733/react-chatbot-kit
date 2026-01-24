@@ -11,6 +11,10 @@ Contributions are welcome — PRs are appreciated. I review when possible.
 - Node 18+
 - Yarn 1.22+
 
+#### Compatibility
+
+- React: Keep `react` and closely related packages pinned to major version **19**. This preserves compatibility with downstream projects that cannot migrate from React 18. Coordinate any React major-version upgrades with downstream consumers before changing this constraint.
+
 ### Setup
 
 1. Install dependencies:
@@ -30,6 +34,10 @@ yarn verify
 ```bash
 yarn test
 ```
+
+## Dependencies
+
+Keep dependencies up to date with each PR. See the **Compatibility** subsection under *Prerequisites* for exceptions to automatic upgrades (for example, the React major-version guidance).
 
 ### VS Code
 

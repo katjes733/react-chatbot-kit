@@ -11,7 +11,7 @@ import ChatbotMessageAvatar from '../../src/components/ChatbotMessage/ChatBotMes
 // Mock useChatbot for Chatbot component
 jest.mock('../../src/hooks/useChatbot', () => ({
   __esModule: true,
-  default: () => ({
+  default: (): any => ({
     configurationError: '',
     invalidPropsError: [],
     ActionProvider: function DummyActionProvider(): any { return null; },
